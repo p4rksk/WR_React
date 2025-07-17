@@ -1,5 +1,4 @@
 import { OverlayTrigger, Popover } from 'react-bootstrap';
-import '../css/SidebarProfile.css';
 
 const popover = (
   <Popover id="profile-popover" className="bg-dark text-white border-0">
