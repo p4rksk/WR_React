@@ -8,8 +8,8 @@
 
 ---
 <p align="center">
-  <img src="WR%20다이어그램.drawio.png" width="28%">
-  <img src="팀%20사용자.drawio.png" width="70%">
+  <img src="./public/WR%20다이어그램.drawio.png" width="28%">
+  <img src="./public/팀%20사용자.drawio.png" width="70%">
 </p>
 
 > **WR은 루틴을 관리하고 코멘트를 남겨 루틴을 되돌아보는 일정관리 및 회고 플랫폼입니다.**  
