@@ -31,14 +31,13 @@
 ### Language
 ![JavaScript](https://img.shields.io/badge/JavaScript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
 ### Framework / Library
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
 ![Spring WebSocket](https://img.shields.io/badge/Spring%20WebSocket-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 ![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-FF5722?style=for-the-badge&logo=spring&logoColor=white)
-![Bootstrap 5](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Bootstrap 5](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![Toast UI Editor](https://img.shields.io/badge/Toast%20UI%20Editor-2C3E50?style=for-the-badge&logo=toast&logoColor=white)
 
 
@@ -56,10 +55,3 @@
 > ※ AWS와 Docker를 이용한 서버 배포는 추후 진행 예정입니다.
 
 ---
-
-# 👉프로젝트 일정 이슈
-
----
-
-**예비군:** 4/14 ~ 4/16  
-**감기 몸살:** 4/17 ~ 4/18
