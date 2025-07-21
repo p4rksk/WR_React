@@ -57,7 +57,7 @@ function Sidebar() {
         <hr className="border-light" />
         <SidebarProfile/>
       </div>
-      <FriendInviteModal show={true} handleClose={handleClose}/>
+      <FriendInviteModal show={show} handleClose={handleClose}/>
     </>
   );
 }

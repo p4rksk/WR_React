@@ -1,7 +1,8 @@
-import React, {useCallback ,useEffect, useState } from 'react';
+import React, {useCallback , useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { Button } from 'react-bootstrap';
 import debounce from 'lodash/debounce';
+
 
 const dummyFriends = [
     {id: 1, name:"김철수"},
@@ -24,7 +25,7 @@ function FriendInviteModal({show, handleClose}) {
       [] // 의존성 없음 = 재생성 안되게 한다.          
     );
 
-    useEffect = (() => {
+    useEffect(() => {
         if(search.trim() !== '') {
             debouncedSearch(search);
         }else{
@@ -38,6 +39,8 @@ function FriendInviteModal({show, handleClose}) {
     setSearch(friend.name); 
     setResults([]); 
   };
+
+    
     
     const handleInvite = () => {
         if (!selectedFriend) {
@@ -47,7 +50,6 @@ function FriendInviteModal({show, handleClose}) {
 
         
     }
-
 
 
     return (
@@ -64,6 +66,22 @@ function FriendInviteModal({show, handleClose}) {
         <Modal.Body className="d-flex flex-column gap-2">
           <label htmlFor="friendNameInput">친구 이름</label>
           <input type="text" id="friendNameInput" value={search} onChange={(e)=> setSearch(e.target.value)} placeholder="이름을 입력하세요"/>
+          {results.length > 0 && (
+          <div className="border rounded bg-light p-2">
+            {results.map((friend) => (
+              <div
+                key={friend.id}
+                onClick={() => handleSelect(friend)}
+                className={`p-1 cursor-pointer ${
+                  selectedFriend?.id === friend.id ? 'bg-primary text-white' : ''
+                }`}
+                style={{ borderRadius: '4px', cursor: 'pointer' }}
+              >
+                {friend.name}
+              </div>
+            ))}
+          </div>
+        )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
