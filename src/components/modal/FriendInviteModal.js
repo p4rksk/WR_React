@@ -26,6 +26,12 @@ function FriendInviteModal({show, handleClose}) {
     );
 
     useEffect(() => {
+       if (!show) {
+           setSearch('');
+          setResults([]);
+          setSelectedFriend(null);
+        }
+
         if(search.trim() !== '') {
             debouncedSearch(search);
         }else{

@@ -9,7 +9,7 @@ const dummyTeams = [
     {id: 2, name:"독서팀"}
 ]
 
-function TeamJoinModal({show, handleClose}) {
+function TeamCreateModal({show, handleClose}) {
     const [search, setSearch] = useState('');
         const [results, setResults] = useState([]);
         const [selectedTeam, setSelectedTeam] = useState(null);
@@ -27,19 +27,13 @@ function TeamJoinModal({show, handleClose}) {
 
 
     useEffect(()=> {
-         if (!show) {
-           setSearch('');
-          setResults([]);
-          setSelectedTeam(null);
-        }
-
         if(search.trim() !== ''){
             debouncedSearch(search)
         }else{
             setResults([]);
             setSelectedTeam(null);
         }
-    }, [show,search, debouncedSearch]);
+    }, [search, debouncedSearch]);
 
     const handleSelect =  (team) => {
         setSelectedTeam(team);
@@ -91,4 +85,4 @@ function TeamJoinModal({show, handleClose}) {
     );
 }
 
-export default TeamJoinModal;
+export default TeamCreateModal;
