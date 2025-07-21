@@ -40,16 +40,6 @@ function FriendInviteModal({show, handleClose}) {
     setResults([]); 
   };
 
-    
-    
-    const handleInvite = () => {
-        if (!selectedFriend) {
-            alert('친구를 선택해주세요')
-        return
-        }
-
-        
-    }
 
 
     return (
@@ -73,7 +63,7 @@ function FriendInviteModal({show, handleClose}) {
                 key={friend.id}
                 onClick={() => handleSelect(friend)}
                 className={`p-1 cursor-pointer ${
-                  selectedFriend?.id === friend.id ? 'bg-primary text-white' : ''
+                  selectedFriend?.id === friend.id ? 'text-black' : ''
                 }`}
                 style={{ borderRadius: '4px', cursor: 'pointer' }}
               >
