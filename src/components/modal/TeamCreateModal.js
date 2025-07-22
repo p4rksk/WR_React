@@ -1,47 +1,21 @@
-import React, {useCallback , useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { Button } from 'react-bootstrap';
-import debounce from 'lodash/debounce';
+import Form from 'react-bootstrap/Form';
 
-
-const dummyTeams = [
-    {id: 1, name:"러닝팀"},
-    {id: 2, name:"독서팀"}
-]
 
 function TeamCreateModal({show, handleClose}) {
-    const [search, setSearch] = useState('');
-        const [results, setResults] = useState([]);
-        const [selectedTeam, setSelectedTeam] = useState(null);
-
-      const debouncedSearch = useCallback(
-              debounce((value) => {
-                const filter = dummyTeams.filter(
-                  (team) => team.name.includes(value) 
-                );
-                
-                setResults(filter);
-          }, 300),
-          []  
-        );    
+    const [previewUrl, setPreviewUrl] = useState(null);
+    const [category, setCategory] = useState('');
 
 
-    useEffect(()=> {
-        if(search.trim() !== ''){
-            debouncedSearch(search)
-        }else{
-            setResults([]);
-            setSelectedTeam(null);
-        }
-    }, [search, debouncedSearch]);
-
-    const handleSelect =  (team) => {
-        setSelectedTeam(team);
-        setSearch(team.name);
-        setResults([]);
-    }
-    
-
+    const handleImageSelect = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const url = URL.createObjectURL(file);
+        setPreviewUrl(url);
+      }
+    };
 
     return (
         <div>
@@ -54,25 +28,40 @@ function TeamCreateModal({show, handleClose}) {
         <Modal.Header closeButton>
           <Modal.Title>팀 가입</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="d-flex flex-column gap-2">
-          <label htmlFor="TeamNameInput">팀 이름</label>
-          <input type="text" id="TeamNameInput" value={search} onChange={(e)=> setSearch(e.target.value)} placeholder="이름을 입력하세요"/>
-          {results.length > 0 && (
-          <div className="border rounded bg-light p-2">
-            {results.map((team) => (
-              <div
-                key={team.id}
-                onClick={() => handleSelect(team)}
-                className={`p-1 cursor-pointer ${
-                  selectedTeam?.id === team.id ? 'text-black' : ''
-                }`}
-                style={{ borderRadius: '4px', cursor: 'pointer' }}
-              >
-                {team.name}
-              </div>
-            ))}
-          </div>
-        )}
+        <Modal.Body >
+          <Form className="d-flex flex-column gap-2">
+            <Form.Group controlId="teamImage">
+              <Form.Label>팀 대표 이미지</Form.Label>
+              <Form.Control type="file" accept="image/*" onChange={handleImageSelect} required />
+            </Form.Group>
+            {previewUrl && (
+              <img src={previewUrl} alt="미리보기" className="img-thumbnail mt-2" width="200" />
+            )}
+            <Form.Group controlId="teamCategory">
+              <Form.Label>카테고리</Form.Label>
+              <Form.Select value={category} onChange={(e) => setCategory(e.target.value)} required>
+                <option value="">카테고리 선택</option>
+                <option value="운동">운동</option>
+                <option value="독서">독서</option>
+                <option value="식단">식단</option>
+                <option value="공부">공부</option>
+                <option value="기상">기상</option>
+              </Form.Select>
+            </Form.Group>
+            <Form.Group  controlId="teamName">            
+              <Form.Label>팀 이름</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="팀 이름을 입력해주세요"
+                autoFocus
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="teamDescription">
+              <Form.Label>팀 소개</Form.Label>
+              <Form.Control as="textarea" rows={3} placeholder='팀 소개를 입력해주세요' required/>
+            </Form.Group>
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

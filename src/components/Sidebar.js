@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import FriendInviteModal from './modal/FriendInviteModal';
 import TeamJoinModal from './modal/TeamJoinModal';
+import TeamCreateModal from './modal/TeamCreateModal';
 
 
 
@@ -28,8 +29,8 @@ function Sidebar() {
       <Link href='' className="dropdown-item text-white">A팀</Link>
       <hr className="border-light" />
       <Button className="dropdown-item text-white" onClick={()=>setActiveModal(Modal.TEAM_JOIN)}>팀 가입</Button>
-      <Button className="dropdown-item text-white">팀 생성</Button>
-      <Button className="dropdown-item text-white">팀 초대</Button>
+      <Button className="dropdown-item text-white" onClick={()=>setActiveModal(Modal.TEAM_CREATE)}>팀 생성</Button>
+      <Button className="dropdown-item text-white" onClick={()=>setActiveModal(Modal.TEAM_INVITE)}>팀 초대</Button>
     </Popover.Body>
   </Popover>
 );
@@ -67,6 +68,7 @@ function Sidebar() {
       </div>
       <FriendInviteModal show={activeModal == Modal.FRIEND_INVITE} handleClose={handleClose}/>
       <TeamJoinModal show={activeModal == Modal.TEAM_JOIN} handleClose={handleClose}/>
+      <TeamCreateModal show={activeModal == Modal.TEAM_CREATE} handleClose={handleClose}/>
     </>
   );
 }
