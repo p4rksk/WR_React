@@ -4,9 +4,9 @@ import SidebarProfile from './SidebarProfile';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import FriendInviteModal from './modal/FriendInviteModal';
-import TeamJoinModal from './modal/TeamJoinModal';
-import TeamCreateModal from './modal/TeamCreateModal';
-import TeamInviteModal from './modal/TeamInviteModal';
+import TeamJoinModal from './modal/team/TeamJoinModal';
+import TeamCreateModal from './modal/team/TeamCreateModal';
+import TeamInviteModal from './modal/team/TeamInviteModal';
 
 
 
