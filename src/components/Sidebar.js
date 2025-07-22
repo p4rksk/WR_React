@@ -6,6 +6,7 @@ import { useState } from 'react';
 import FriendInviteModal from './modal/FriendInviteModal';
 import TeamJoinModal from './modal/TeamJoinModal';
 import TeamCreateModal from './modal/TeamCreateModal';
+import TeamInviteModal from './modal/TeamInviteModal';
 
 
 
@@ -69,6 +70,7 @@ function Sidebar() {
       <FriendInviteModal show={activeModal == Modal.FRIEND_INVITE} handleClose={handleClose}/>
       <TeamJoinModal show={activeModal == Modal.TEAM_JOIN} handleClose={handleClose}/>
       <TeamCreateModal show={activeModal == Modal.TEAM_CREATE} handleClose={handleClose}/>
+      <TeamInviteModal show={activeModal == Modal.TEAM_INVITE} handleClose={handleClose}/>
     </>
   );
 }
