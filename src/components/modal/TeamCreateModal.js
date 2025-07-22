@@ -26,7 +26,7 @@ function TeamCreateModal({show, handleClose}) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>팀 가입</Modal.Title>
+          <Modal.Title>팀 만들기</Modal.Title>
         </Modal.Header>
         <Modal.Body >
           <Form className="d-flex flex-column gap-2">
@@ -67,7 +67,7 @@ function TeamCreateModal({show, handleClose}) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary">팀 가입</Button>
+          <Button variant="primary">팀 만들기</Button>
         </Modal.Footer>
       </Modal>          
         </div>
