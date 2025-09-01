@@ -47,6 +47,11 @@ function TeamJoinModal({show, handleClose}) {
         setResults([]);
     }
     
+    const handleClear = () => {
+    setSelectedTeam(null);
+    setSearch('');
+    setResults([]);
+  };
 
 
     return (
@@ -63,20 +68,28 @@ function TeamJoinModal({show, handleClose}) {
         <Modal.Body className="d-flex flex-column gap-2">
           <label htmlFor="TeamNameInput">팀 이름</label>
           <input type="text" id="TeamNameInput" value={search} onChange={(e)=> setSearch(e.target.value)} placeholder="이름을 입력하세요"/>
-          {results.length > 0 && (
+          {results.length > 0 && !selectedTeam && (
           <div className="border rounded bg-light p-2">
             {results.map((team) => (
               <div
                 key={team.id}
                 onClick={() => handleSelect(team)}
                 className={`p-1 cursor-pointer ${
-                  selectedTeam?.id === team.id ? 'text-black' : ''
+                  selectedTeam?.id === team.id ? 'active' : ''
                 }`}
                 style={{ borderRadius: '4px', cursor: 'pointer' }}
               >
                 {team.name}
               </div>
             ))}
+          </div>
+        )}
+          {selectedTeam && (
+          <div className="border rounded p-2 bg-primary-subtle text-primary-emphasis d-flex justify-content-between align-items-center">
+            <span>{selectedTeam.name}</span>
+            <button className="btn btn-sm btn-outline-primary" onClick={handleClear}>
+              선택 해제
+            </button>
           </div>
         )}
         </Modal.Body>

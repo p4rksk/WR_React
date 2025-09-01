@@ -46,6 +46,13 @@ function FriendInviteModal({show, handleClose}) {
     setResults([]); 
   };
 
+    const handleClear = () => {
+    setSelectedFriend(null);
+    setSearch('');
+    setResults([]);
+  };
+
+
 
 
     return (
@@ -62,20 +69,28 @@ function FriendInviteModal({show, handleClose}) {
         <Modal.Body className="d-flex flex-column gap-2">
           <label htmlFor="friendNameInput">친구 이름</label>
           <input type="text" id="friendNameInput" value={search} onChange={(e)=> setSearch(e.target.value)} placeholder="이름을 입력하세요"/>
-          {results.length > 0 && (
+          {results.length > 0 && !selectedFriend &&(
           <div className="border rounded bg-light p-2">
             {results.map((friend) => (
               <div
                 key={friend.id}
                 onClick={() => handleSelect(friend)}
                 className={`p-1 cursor-pointer ${
-                  selectedFriend?.id === friend.id ? 'text-black' : ''
+                  selectedFriend?.id === friend.id ? 'active' : ''
                 }`}
                 style={{ borderRadius: '4px', cursor: 'pointer' }}
               >
                 {friend.name}
               </div>
             ))}
+          </div>
+        )}
+          {selectedFriend && (
+          <div className="border rounded p-2 bg-primary-subtle text-primary-emphasis d-flex justify-content-between align-items-center">
+            <span>{selectedFriend.name}</span>
+            <button className="btn btn-sm btn-outline-primary" onClick={handleClear}>
+              선택 해제
+            </button>
           </div>
         )}
         </Modal.Body>

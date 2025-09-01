@@ -58,7 +58,7 @@ function TeamInviteModal({show, handleClose}) {
         teamDebouncedSearch(teamNameSearch)
       }else{
         setTeamNameResults([]);
-        setSelectedTeam([]);
+        setSelectedTeam(null);
       }
 
     
@@ -75,7 +75,7 @@ function TeamInviteModal({show, handleClose}) {
         friendDebouncedSearch(friendNameSearch)
       }else{
         setFriendNameResults([]);
-        setSelectedFriend([]);
+        setSelectedFriend(null);
       }
 
     
@@ -94,6 +94,19 @@ function TeamInviteModal({show, handleClose}) {
       setFriendNameSearch(friend.name);
       setFriendNameResults([]);
     }
+
+    const teamNameHandleClear = () => {
+    setSelectedTeam(null);
+    setTeamNameSearch('');
+    setTeamNameResults([]);
+  };
+
+   const friendNameHandleClear = () => {
+    setSelectedFriend(null);
+    setFriendNameSearch('');
+    setFriendNameResults([]);
+  };
+
 
     return (
         <div>
@@ -119,22 +132,30 @@ function TeamInviteModal({show, handleClose}) {
                 required
                 className='mb-2'
               />
-             {teamNameResults.length > 0 && (
-                <div className="border rounded bg-light p-2">
-                  {teamNameResults.map((team) => (
-                    <div
-                      key={team.id}
-                      onClick={() => handleTeamNameSelect(team)}
-                      className={`p-1 cursor-pointer ${
-                        selectedTeam?.id === team.id ? 'text-black' : ''
-                      }`}
-                      style={{ borderRadius: '4px', cursor: 'pointer' }}
-                    >
-                      {team.name}
-                    </div>
-                  ))}
-                </div>
-              )}
+            {teamNameResults.length > 0 && !selectedTeam && (
+              <div className="border rounded bg-light p-2">
+                 {teamNameResults.map((team) => (
+                   <div
+                     key={team.id}
+                     onClick={() => handleTeamNameSelect(team)}
+                     className={`p-1 cursor-pointer ${
+                       selectedTeam?.id === team.id ? 'active' : ''
+                     }`}
+                     style={{ borderRadius: '4px', cursor: 'pointer' }}
+                   >
+                     {team.name}
+                   </div>
+                ))}
+              </div>
+            )}
+            {selectedTeam && (
+              <div className="border rounded p-2 bg-primary-subtle text-primary-emphasis d-flex justify-content-between align-items-center">
+                <span>{selectedTeam.name}</span>
+                <button className="btn btn-sm btn-outline-primary" onClick={teamNameHandleClear}>
+                  선택 해제
+                </button>
+              </div>
+            )}
             </Form.Group>
             <Form.Group controlId="friendName">
               <Form.Label>친구 이름</Form.Label>
@@ -146,7 +167,7 @@ function TeamInviteModal({show, handleClose}) {
                 required
               />
             </Form.Group>
-            {friendNameResults.length > 0 && (
+            {friendNameResults.length > 0 && !selectedFriend &&(
               <div
                 className="border rounded bg-light p-2"
                 style={{
@@ -161,13 +182,21 @@ function TeamInviteModal({show, handleClose}) {
                     key={friend.id}
                     onClick={() => handleFriendNameSelect(friend)}
                     className={`p-1 cursor-pointer ${
-                      selectedFriend?.id === friend.id ? 'text-black' : ''
+                      selectedFriend?.id === friend.id ? 'active' : ''
                     }`}
                     style={{ borderRadius: '4px', cursor: 'pointer' }}
                   >
                     {friend.name}
                   </div>
                 ))}
+              </div>
+            )}
+              {selectedFriend && (
+              <div className="border rounded p-2 bg-primary-subtle text-primary-emphasis d-flex justify-content-between align-items-center">
+                <span>{selectedFriend.name}</span>
+                <button className="btn btn-sm btn-outline-primary" onClick={friendNameHandleClear}>
+                  선택 해제
+                </button>
               </div>
             )}
           </Form>

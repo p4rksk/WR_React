@@ -1,15 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-import Sidebar from './components/Sidebar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Test from './Test';
+import Layout from './components/Layout';
+import MyRoutine from './components/user/MyRoutine';
+import TeamRoutine from './components/team/TeamRoutine';
+import { Routes, Route } from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-      <Sidebar/>
-    </div>
-    // <Test/>
+    <Routes>
+      <Route path="/"element={<Layout />}>
+        <Route index element={<MyRoutine />} />
+        <Route path="my/routines" element={<MyRoutine />} />
+        <Route path="team/routines" element={<TeamRoutine />} />
+      </Route>
+    </Routes>
   );
 }
 

@@ -1,13 +1,14 @@
 import React from 'react';
 import '../css/Layout.css';
 import Sidebar from './Sidebar';
+import { Outlet } from 'react-router-dom';
 
-function Layout(children) {
+function Layout() {
     return (
         <div className = "layout">
             <Sidebar/>
             <main className = "main-content">
-                {children}
+                <Outlet/>
             </main>
         </div>
     );

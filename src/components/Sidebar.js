@@ -42,7 +42,7 @@ function Sidebar() {
         <h4 className="mt-2 mb-2">WR</h4>
         <hr className="border-secondary"/>
         <Nav className="mt-4 flex-column gap-3">
-          <Nav.Link href="#home">홈</Nav.Link>    
+          <Nav.Link href="/">홈</Nav.Link>    
           <Nav.Link href="#notifications">알림함</Nav.Link>
           <Nav.Link href="#search">루틴 검색</Nav.Link>
           <Nav.Link>
